@@ -26,6 +26,10 @@
         <activity
             android:name=".VideoGamesViewActivity"
             android:label="@string/title_activity_video_games_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VideoGameViewActivity"
+            android:label="@string/title_activity_video_game_view"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
