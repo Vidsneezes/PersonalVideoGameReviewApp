@@ -1,0 +1,18 @@
+{
+  "videoGames":
+    [
+      {
+        "name":"Halo Combat Evolved",
+        "description":"Revolutionary FPS game for the original Xbox",
+        "videoUrl":"http://youtube.com",
+        "reviews":
+        [
+          {
+            "author":"Flex",
+            "review":"Very good game i play it all day",
+            "score":"50"
+          }
+        ]
+      }
+    ]
+}
