@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
@@ -46,16 +47,42 @@ public class VideoGamesViewActivity extends AppCompatActivity {
         });
     }
 
-    private void LoadGamesToList()
-    {
-        JsonReader jsonReader = new JsonReader(new InputStreamReader( getAssets().open("videogames.json"));
+    private  void readVideoGameRoot() throws IOException{
+        JsonReader jsonReader = new JsonReader(new InputStreamReader( getAssets().open("videogames.json")));
         jsonReader.beginObject();
+        while(jsonReader.hasNext())
+        {
+            readVideoGameList(jsonReader);
+        }
+        jsonReader.endObject();
+    }
 
+    private void readVideoGameList(JsonReader jsonReader) throws IOException{
+
+        jsonReader.beginArray();
+        while(jsonReader.hasNext())
+        {
+            readVideoGameObject(jsonReader);
+        }
+        jsonReader.endArray();
+
+    }
+
+    private void readVideoGameObject(JsonReader jsonReader) throws IOException {
+        jsonReader.beginObject();
+        VideoGame videoGame = new VideoGame();
         while(jsonReader.hasNext())
         {
             String name = jsonReader.nextName();
+            if(name.equals("name"))
+            {
+                videoGame.setName(jsonReader.nextString());
+            }else if(name.equals("description")){
+                videoGame.setDescription(jsonReader.nextString());
+            }else if(name.equals("videoUrl")){
+                videoGame.setVideoUrl(jsonReader.nextString());
+            }
         }
         jsonReader.endObject();
-
     }
 }
