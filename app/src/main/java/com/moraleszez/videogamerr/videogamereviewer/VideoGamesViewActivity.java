@@ -74,8 +74,7 @@ public class VideoGamesViewActivity extends AppCompatActivity {
         while(jsonReader.hasNext())
         {
             String name = jsonReader.nextName();
-            if(name.equals("name"))
-            {
+            if(name.equals("name")) {
                 videoGame.setName(jsonReader.nextString());
             }else if(name.equals("description")){
                 videoGame.setDescription(jsonReader.nextString());
